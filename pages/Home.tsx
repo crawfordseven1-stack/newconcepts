@@ -85,7 +85,11 @@ const Home: React.FC = () => {
       <section className="relative bg-blue-900 text-white">
         <div className="absolute inset-0 opacity-20">
             <img 
-                src="https://picsum.photos/1920/1080?grayscale&blur=2" 
+                src="images/hero-bg.jpg" 
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.src = "https://picsum.photos/1920/1080?grayscale&blur=2";
+                }}
                 alt="Calm water background" 
                 className="w-full h-full object-cover"
             />

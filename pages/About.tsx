@@ -65,7 +65,11 @@ const About: React.FC = () => {
              {/* Using a placeholder for Ky Washington */}
              <div className="aspect-[3/4] bg-slate-200 rounded-lg overflow-hidden shadow-lg relative">
                 <img 
-                    src="https://picsum.photos/400/600?grayscale" 
+                    src="images/ky-photo-biz.jpg" 
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.src = "https://picsum.photos/400/600?grayscale";
+                    }}
                     alt="Ky Washington" 
                     className="w-full h-full object-cover"
                 />
