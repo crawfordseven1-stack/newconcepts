@@ -8,6 +8,7 @@ import About from './pages/About';
 import FAQ from './pages/FAQ';
 import Rates from './pages/Rates';
 import Contact from './pages/Contact';
+import Intake from './pages/Intake';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/rates" element={<Rates />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/intake" element={<Intake />} />
           </Routes>
         </Layout>
       </Router>

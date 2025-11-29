@@ -12,6 +12,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navItems: NavItem[] = [
     { label: t('Home', 'Inicio'), path: '/' },
     { label: t('Services', 'Servicios'), path: '/services' },
+    { label: t('Intake Form', 'Formulario de Admisión'), path: '/intake' },
     { label: t('About', 'Nosotros'), path: '/about' },
     { label: t('FAQ', 'Preguntas'), path: '/faq' },
     { label: t('Insurance', 'Seguros'), path: '/rates' },
@@ -59,7 +60,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </Link>
 
             {/* Desktop Menu */}
-            <nav className="hidden md:flex space-x-6 lg:space-x-8 items-center">
+            <nav className="hidden md:flex space-x-4 lg:space-x-6 items-center">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -74,9 +75,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </nav>
 
             {/* Right Side Actions: Sticky Book Now Button & Mobile Toggle */}
-            <div className="flex items-center gap-3 sm:gap-4 shrink-0 pl-8">
+            <div className="flex items-center gap-3 sm:gap-4 shrink-0 pl-4 lg:pl-8">
                <Link 
-                to="/contact" 
+                to="/intake" 
                 className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
               >
                 {t('Book Now', 'Reservar Ahora')}
@@ -98,7 +99,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl animate-fade-in">
+          <div className="md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl animate-fade-in max-h-[calc(100vh-80px)] overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
                 <Link
@@ -161,7 +162,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <li><Link to="/services" className="hover:text-blue-400 transition-colors">{t('Out of State DUI Assessments', 'Evaluaciones DUI Fuera del Estado')}</Link></li>
                 <li><Link to="/services" className="hover:text-blue-400 transition-colors">{t('Addiction Counseling', 'Consejería de Adicciones')}</Link></li>
                 <li><Link to="/rates" className="hover:text-blue-400 transition-colors">{t('Rates & Military Discount', 'Tarifas y Descuento Militar')}</Link></li>
-                <li><Link to="/contact" className="hover:text-blue-400 transition-colors">{t('Request Appointment', 'Solicitar Cita')}</Link></li>
+                <li><Link to="/intake" className="hover:text-blue-400 transition-colors">{t('Intake Form', 'Formulario de Admisión')}</Link></li>
               </ul>
             </div>
 
