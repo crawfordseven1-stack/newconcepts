@@ -121,29 +121,29 @@ const Contact: React.FC = () => {
                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                <div>
                                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">{current.nameLabel}</label>
-                                   <input type="text" id="name" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder={current.namePlace} />
+                                   <input type="text" id="name" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder={current.namePlace} />
                                </div>
                                <div>
                                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">{current.phoneLabel}</label>
-                                   <input type="tel" id="phone" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="(555) 123-4567" />
+                                   <input type="tel" id="phone" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="(555) 123-4567" />
                                </div>
                            </div>
 
                            <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">{current.emailLabel}</label>
-                                <input type="email" id="email" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="john@example.com" />
+                                <input type="email" id="email" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="john@example.com" />
                            </div>
 
                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                <div>
                                    <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-1">{current.serviceLabel}</label>
-                                   <select id="service" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                   <select id="service" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                        {current.services.map((svc, i) => <option key={i}>{svc}</option>)}
                                    </select>
                                </div>
                                <div>
                                    <label htmlFor="language" className="block text-sm font-medium text-slate-700 mb-1">{current.langLabel}</label>
-                                   <select id="language" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                   <select id="language" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                        <option>English</option>
                                        <option>Español</option>
                                    </select>
@@ -152,7 +152,7 @@ const Contact: React.FC = () => {
 
                            <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">{current.msgLabel}</label>
-                                <textarea id="message" rows={4} className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder={current.msgPlace}></textarea>
+                                <textarea id="message" rows={4} className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder={current.msgPlace}></textarea>
                            </div>
 
                            <button type="button" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-md transition-colors text-lg">

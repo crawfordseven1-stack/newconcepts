@@ -184,17 +184,17 @@ const Intake: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-1">{current.fullName} *</label>
-                <input required type="text" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+                <input required type="text" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
               </div>
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-1">{current.email} *</label>
-                <input required type="email" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+                <input required type="email" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
               </div>
             </div>
 
             <div className="mb-6">
               <label className="block text-sm font-bold text-slate-700 mb-1">{current.phone} *</label>
-              <input required type="tel" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="(555) 123-4567" />
+              <input required type="tel" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="(555) 123-4567" />
               <p className="text-xs text-slate-500 mt-1">{current.phoneNote}</p>
             </div>
 
@@ -204,7 +204,7 @@ const Intake: React.FC = () => {
                 <div className="flex space-x-4">
                    {current.methods.map((m) => (
                      <label key={m} className="flex items-center space-x-2 cursor-pointer">
-                        <input type="radio" name="contactMethod" className="text-blue-600 focus:ring-blue-500" />
+                        <input type="radio" name="contactMethod" className="text-blue-600 bg-slate-100 focus:ring-blue-500" />
                         <span className="text-slate-700 text-sm">{m}</span>
                      </label>
                    ))}
@@ -212,7 +212,7 @@ const Intake: React.FC = () => {
               </div>
               <div>
                  <label className="block text-sm font-bold text-slate-700 mb-2">{current.apptType}</label>
-                 <select className="w-full bg-white px-3 py-2 border border-slate-300 rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                 <select className="w-full bg-slate-50 px-3 py-2 border border-slate-300 rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500">
                     {current.appts.map(a => <option key={a}>{a}</option>)}
                  </select>
               </div>
@@ -220,11 +220,11 @@ const Intake: React.FC = () => {
 
             <div className="space-y-3 bg-slate-50 p-4 rounded-md">
               <label className="flex items-center space-x-3 cursor-pointer">
-                <input type="checkbox" className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
+                <input type="checkbox" className="w-5 h-5 bg-slate-100 text-blue-600 rounded focus:ring-blue-500 border-slate-300" />
                 <span className="text-slate-700 font-medium">{current.flexibility}</span>
               </label>
               <label className="flex items-center space-x-3 cursor-pointer">
-                <input type="checkbox" defaultChecked className="w-5 h-5 text-teal-600 rounded focus:ring-teal-500" />
+                <input type="checkbox" defaultChecked className="w-5 h-5 bg-slate-100 text-teal-600 rounded focus:ring-teal-500 border-slate-300" />
                 <span className="text-teal-700 font-bold">{current.freeConsult}</span>
               </label>
             </div>
@@ -247,10 +247,10 @@ const Intake: React.FC = () => {
                  const logicValue = content.en.services[idx]; 
                  
                  return (
-                  <label key={idx} className={`flex items-start p-3 rounded-lg border transition-all cursor-pointer ${selectedServices.includes(logicValue) ? 'bg-blue-50 border-blue-500 shadow-sm' : 'bg-white border-slate-200 hover:border-blue-300'}`}>
+                  <label key={idx} className={`flex items-start p-3 rounded-lg border transition-all cursor-pointer ${selectedServices.includes(logicValue) ? 'bg-blue-50 border-blue-500 shadow-sm' : 'bg-slate-50 border-slate-200 hover:border-blue-300'}`}>
                       <input 
                         type="checkbox" 
-                        className="mt-1 w-5 h-5 text-blue-600 rounded focus:ring-blue-500 shrink-0"
+                        className="mt-1 w-5 h-5 text-blue-600 bg-slate-100 rounded focus:ring-blue-500 shrink-0 border-slate-300"
                         onChange={() => handleServiceChange(logicValue)}
                         checked={selectedServices.includes(logicValue)}
                       />
@@ -272,11 +272,11 @@ const Intake: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                    <div>
                        <label className="block text-sm font-bold text-slate-700 mb-1">{current.dateViolation}</label>
-                       <input type="date" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-yellow-500 outline-none" />
+                       <input type="date" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-yellow-500 outline-none" />
                    </div>
                    <div>
                        <label className="block text-sm font-bold text-slate-700 mb-1">{current.duiLoc}</label>
-                       <select className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-yellow-500 outline-none">
+                       <select className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-yellow-500 outline-none">
                            {current.duiOpts.map(opt => <option key={opt}>{opt}</option>)}
                        </select>
                    </div>
@@ -284,12 +284,12 @@ const Intake: React.FC = () => {
 
                 <div className="mb-6">
                     <label className="block text-sm font-bold text-slate-700 mb-1">{current.substances}</label>
-                    <input type="text" className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-yellow-500 outline-none" placeholder={current.substancesPlace} />
+                    <input type="text" className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-yellow-500 outline-none" placeholder={current.substancesPlace} />
                 </div>
 
                 <div className="bg-white p-4 rounded-md border border-yellow-200">
                     <label className="flex items-start space-x-3 cursor-pointer">
-                        <input type="checkbox" className="mt-1 w-5 h-5 text-red-600 rounded focus:ring-red-500" />
+                        <input type="checkbox" className="mt-1 w-5 h-5 text-red-600 bg-slate-100 rounded focus:ring-red-500 border-slate-300" />
                         <div>
                             <span className="text-slate-900 font-bold">{current.expedite}</span>
                             <p className="text-xs text-red-600 mt-1 font-semibold flex items-center">
@@ -312,7 +312,7 @@ const Intake: React.FC = () => {
                 <label className="block text-sm font-bold text-slate-700 mb-2">{current.describe}</label>
                 <textarea 
                     rows={5} 
-                    className="w-full bg-white px-4 py-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-full bg-slate-50 px-4 py-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder={current.describePlace}
                 ></textarea>
             </div>
@@ -322,18 +322,18 @@ const Intake: React.FC = () => {
                    <label className="block text-sm font-bold text-slate-700 mb-2">{current.military}</label>
                    <div className="flex space-x-6">
                        <label className="flex items-center cursor-pointer">
-                           <input type="radio" name="military" className="text-blue-600 focus:ring-blue-500"/>
+                           <input type="radio" name="military" className="text-blue-600 bg-slate-100 focus:ring-blue-500 border-slate-300"/>
                            <span className="ml-2">Yes</span>
                        </label>
                        <label className="flex items-center cursor-pointer">
-                           <input type="radio" name="military" className="text-blue-600 focus:ring-blue-500"/>
+                           <input type="radio" name="military" className="text-blue-600 bg-slate-100 focus:ring-blue-500 border-slate-300"/>
                            <span className="ml-2">No</span>
                        </label>
                    </div>
                 </div>
                 <div>
                     <label className="block text-sm font-bold text-slate-700 mb-2">{current.langPref}</label>
-                    <select className="w-full bg-white px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none">
+                    <select className="w-full bg-slate-50 px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none">
                         {current.langs.map(l => <option key={l}>{l}</option>)}
                     </select>
                 </div>
