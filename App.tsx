@@ -9,6 +9,7 @@ import FAQ from './pages/FAQ';
 import Rates from './pages/Rates';
 import Contact from './pages/Contact';
 import Intake from './pages/Intake';
+import Telehealth from './pages/Telehealth';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/rates" element={<Rates />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/intake" element={<Intake />} />
+            <Route path="/telehealth" element={<Telehealth />} />
           </Routes>
         </Layout>
       </Router>
