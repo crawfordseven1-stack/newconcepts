@@ -1,10 +1,9 @@
 import React from 'react';
 import { Truck, Scale, HeartHandshake, FileText, ChevronRight } from 'lucide-react';
-import { ServiceItem } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Services: React.FC = () => {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
 
   // Bilingual content dictionary
   const content = {
@@ -117,28 +116,28 @@ const Services: React.FC = () => {
   const currentContent = language === 'en' ? content.en : content.es;
   
   // Icons array to map to the items
-  const icons = [<Truck size={32} />, <Scale size={32} />, <HeartHandshake size={32} />, <FileText size={32} />];
+  const icons = [<Truck size={40} />, <Scale size={40} />, <HeartHandshake size={40} />, <FileText size={40} />];
 
   return (
-    <div className="bg-white animate-fade-in">
+    <div className="bg-white animate-fade-in font-sans">
       {/* Header */}
-      <div className="bg-slate-100 py-16">
+      <div className="bg-slate-50 py-20 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">{currentContent.title}</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{currentContent.title}</h1>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             {currentContent.subtitle}
           </p>
         </div>
       </div>
 
       {/* Services List */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
         {currentContent.items.map((service, index) => (
-          <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 items-start`}>
+          <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-16 items-start`}>
             
             {/* Visual/Icon Area */}
-            <div className="w-full md:w-1/3 flex justify-center">
-                <div className="bg-blue-50 p-12 rounded-full ring-8 ring-blue-50/50">
+            <div className="w-full lg:w-1/3 flex justify-center lg:justify-start">
+                <div className="bg-blue-50 p-12 rounded-full ring-8 ring-blue-50/50 shadow-sm">
                     <div className="text-blue-600">
                         {icons[index]}
                     </div>
@@ -146,22 +145,23 @@ const Services: React.FC = () => {
             </div>
 
             {/* Content Area */}
-            <div className="w-full md:w-2/3">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">{service.title}</h2>
-              <div className="w-20 h-1 bg-teal-500 mb-6"></div>
-              <p className="text-lg text-slate-700 mb-8 leading-relaxed">
+            <div className="w-full lg:w-2/3">
+              <h2 className="text-3xl font-bold text-slate-900 mb-5">{service.title}</h2>
+              <div className="w-24 h-1.5 bg-teal-500 mb-8 rounded-full"></div>
+              <p className="text-xl text-slate-600 mb-10 leading-relaxed font-light">
                 {service.description}
               </p>
               
-              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-4 uppercase tracking-wide text-sm">
+              <div className="bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-sm">
+                <h3 className="font-bold text-slate-900 mb-6 uppercase tracking-wide text-sm flex items-center">
+                    <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                     {language === 'en' ? 'Key Features' : 'Características Clave'}
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
                   {service.features.map((feature, fIndex) => (
                     <div key={fIndex} className="flex items-start">
-                      <ChevronRight size={18} className="text-teal-500 mr-2 shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{feature}</span>
+                      <ChevronRight size={18} className="text-teal-500 mr-2 shrink-0 mt-1" />
+                      <span className="text-slate-700 font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -171,11 +171,11 @@ const Services: React.FC = () => {
         ))}
 
         {/* Specialty Areas Badge Section */}
-        <div className="mt-16 pt-16 border-t border-slate-200">
-            <h2 className="text-2xl font-bold text-center mb-10">{currentContent.specialtiesTitle}</h2>
-            <div className="flex flex-wrap justify-center gap-4">
+        <div className="mt-24 pt-24 border-t border-slate-100">
+            <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">{currentContent.specialtiesTitle}</h2>
+            <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
                 {currentContent.tags.map((tag, i) => (
-                    <span key={i} className="px-6 py-2 bg-white border border-slate-300 rounded-full text-slate-700 shadow-sm hover:border-blue-500 hover:text-blue-600 transition-colors cursor-default">
+                    <span key={i} className="px-6 py-3 bg-white border border-slate-200 rounded-full text-slate-700 font-medium shadow-sm hover:border-blue-500 hover:text-blue-600 hover:shadow-md transition-all cursor-default">
                         {tag}
                     </span>
                 ))}
