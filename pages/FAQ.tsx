@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaqItem } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const FAQ: React.FC = () => {
@@ -113,29 +112,29 @@ const FAQ: React.FC = () => {
   const current = language === 'en' ? content.en : content.es;
 
   return (
-    <div className="bg-slate-50 min-h-screen animate-fade-in pb-20">
-      <div className="bg-white shadow-sm py-12 mb-12">
+    <div className="bg-slate-50 min-h-screen animate-fade-in font-sans">
+      <div className="bg-white border-b border-slate-100 py-20 mb-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="text-3xl font-bold text-slate-900">{current.title}</h1>
-            <p className="mt-4 text-slate-600">{current.subtitle}</p>
+            <h1 className="text-4xl font-bold text-slate-900 mb-6">{current.title}</h1>
+            <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">{current.subtitle}</p>
           </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-24">
         {current.groups.map((group, groupIndex) => (
-          <div key={groupIndex} className="mb-12">
-            <h2 className="text-xl font-bold text-teal-700 mb-6 border-b border-teal-200 pb-2">{group.category}</h2>
+          <div key={groupIndex} className="mb-16">
+            <h2 className="text-2xl font-bold text-blue-900 mb-8 border-b-2 border-blue-100 pb-3 inline-block">{group.category}</h2>
             <div className="space-y-6">
               {group.items.map((faq, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-slate-900 mb-3 flex items-start">
-                        <span className="text-blue-500 mr-3 font-bold">{current.q}</span>
-                        {faq.question}
+                <div key={index} className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
+                  <div className="p-8">
+                    <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-start">
+                        <span className="text-blue-600 mr-4 text-2xl leading-none font-black opacity-30 select-none">{current.q}</span>
+                        <span className="mt-1">{faq.question}</span>
                     </h3>
                     <div className="flex items-start">
-                        <span className="text-slate-400 mr-3 font-bold mt-1">{current.a}</span>
-                        <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+                        <span className="text-teal-600 mr-4 text-2xl leading-none font-black opacity-30 select-none">{current.a}</span>
+                        <p className="text-slate-600 leading-relaxed text-lg mt-1">{faq.answer}</p>
                     </div>
                   </div>
                 </div>
