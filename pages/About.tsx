@@ -63,21 +63,17 @@ const About: React.FC = () => {
           
           {/* Image Column */}
           <div className="lg:w-1/3 w-full sticky top-24">
-             <div className="aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden shadow-xl relative group">
-                <img 
-                    src="images/ky-photo-biz.jpg" 
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.src = "https://picsum.photos/400/600?grayscale";
-                    }}
-                    alt="Ky Washington" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900 to-transparent pt-20 pb-6 px-6 text-white">
-                    <p className="font-bold text-2xl">Ky Washington</p>
-                    <p className="text-blue-200 font-medium">Program Director & Counselor</p>
-                </div>
-             </div>
+            <div className="aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden shadow-xl relative group">
+              <img 
+                src="https://i.imgur.com/wY7dw9B.jpeg"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.src = "https://picsum.photos/400/600?grayscale";
+                }}
+                alt="Ky Washington"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </div>
 
           {/* Bio Content Column */}
