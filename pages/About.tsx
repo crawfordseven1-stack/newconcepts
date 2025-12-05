@@ -94,7 +94,7 @@ const About = () => {
                 // Fallback image in case the main URL fails
                 onError={(e) => {
                   const target = e.currentTarget;
-                  target.src = "https://i.imgur.com/wY7dw9B.jpeg";
+                  target.src = "https://placehold.co/400x600/333/fff?text=Image+Not+Found";
                 }}
                 alt="Ky Washington - Drug & Alcohol Counselor"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
