@@ -57,13 +57,13 @@ const About: React.FC = () => {
   const current = language === 'en' ? content.en : content.es;
 
   return (
-    <div className="bg-white animate-fade-in">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Image Placeholder */}
-          <div className="md:w-1/3">
-             {/* Using a placeholder for Ky Washington */}
-             <div className="aspect-[3/4] bg-slate-200 rounded-lg overflow-hidden shadow-lg relative">
+    <div className="bg-white animate-fade-in font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
+          
+          {/* Image Column */}
+          <div className="lg:w-1/3 w-full sticky top-24">
+             <div className="aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden shadow-xl relative group">
                 <img 
                     src="images/ky-photo-biz.jpg" 
                     onError={(e) => {
@@ -71,54 +71,70 @@ const About: React.FC = () => {
                       target.src = "https://picsum.photos/400/600?grayscale";
                     }}
                     alt="Ky Washington" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-blue-900/80 text-white p-4">
-                    <p className="font-bold text-lg">Ky Washington</p>
-                    <p className="text-sm text-blue-200">Program Director & Counselor</p>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900 to-transparent pt-20 pb-6 px-6 text-white">
+                    <p className="font-bold text-2xl">Ky Washington</p>
+                    <p className="text-blue-200 font-medium">Program Director & Counselor</p>
                 </div>
              </div>
           </div>
 
-          {/* Bio Content */}
-          <div className="md:w-2/3">
-            <h1 className="text-4xl font-bold text-slate-900 mb-6">{current.title}</h1>
-            <h2 className="text-xl text-teal-600 font-medium mb-6">{current.role}</h2>
+          {/* Bio Content Column */}
+          <div className="lg:w-2/3">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">{current.title}</h1>
+            <h2 className="text-xl md:text-2xl text-teal-600 font-medium mb-10 border-b border-slate-100 pb-8">{current.role}</h2>
             
-            <div className="prose prose-slate max-w-none text-slate-700 space-y-4">
+            <div className="prose prose-lg prose-slate max-w-none text-slate-600 space-y-6 leading-relaxed">
               <p>{current.bio1}</p>
               <p>{current.bio2}</p>
               <p>{current.bio3}</p>
             </div>
 
-            {/* Certifications Grid */}
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-blue-600">
-                <div className="flex items-center mb-3">
-                   <Award className="text-blue-600 mr-2" />
-                   <h3 className="font-bold text-slate-900">{current.certsTitle}</h3>
+            {/* Credentials Grid */}
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-slate-50 p-8 rounded-xl border-l-4 border-blue-600 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-6">
+                   <div className="p-3 bg-blue-100 text-blue-600 rounded-full mr-4">
+                      <Award size={24} />
+                   </div>
+                   <h3 className="font-bold text-slate-900 text-lg">{current.certsTitle}</h3>
                 </div>
-                <ul className="list-disc list-inside text-sm text-slate-700 space-y-1">
-                    {current.certs.map((cert, idx) => <li key={idx}>{cert}</li>)}
+                <ul className="space-y-3">
+                    {current.certs.map((cert, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-slate-700">
+                        <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 mr-2 shrink-0"></span>
+                        {cert}
+                      </li>
+                    ))}
                 </ul>
               </div>
 
-              <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-teal-600">
-                <div className="flex items-center mb-3">
-                   <GraduationCap className="text-teal-600 mr-2" />
-                   <h3 className="font-bold text-slate-900">{current.expertiseTitle}</h3>
+              <div className="bg-slate-50 p-8 rounded-xl border-l-4 border-teal-600 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-6">
+                   <div className="p-3 bg-teal-100 text-teal-600 rounded-full mr-4">
+                      <GraduationCap size={24} />
+                   </div>
+                   <h3 className="font-bold text-slate-900 text-lg">{current.expertiseTitle}</h3>
                 </div>
-                <ul className="list-disc list-inside text-sm text-slate-700 space-y-1">
-                    {current.expertise.map((exp, idx) => <li key={idx}>{exp}</li>)}
+                <ul className="space-y-3">
+                    {current.expertise.map((exp, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-slate-700">
+                        <span className="w-1.5 h-1.5 bg-teal-600 rounded-full mt-2 mr-2 shrink-0"></span>
+                        {exp}
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
             
-            <div className="mt-10 p-6 bg-blue-900 text-white rounded-xl flex items-start">
-                <Users className="shrink-0 mr-4 mt-1" size={24}/>
+            <div className="mt-12 p-8 bg-blue-900 text-white rounded-2xl flex items-start shadow-xl">
+                <div className="p-3 bg-blue-800 rounded-full mr-6 shrink-0">
+                   <Users size={24}/>
+                </div>
                 <div>
-                    <h4 className="font-bold text-lg mb-1">{current.spanishTitle}</h4>
-                    <p className="text-blue-200">{current.spanishDesc}</p>
+                    <h4 className="font-bold text-xl mb-2">{current.spanishTitle}</h4>
+                    <p className="text-blue-100 leading-relaxed">{current.spanishDesc}</p>
                 </div>
             </div>
           </div>
