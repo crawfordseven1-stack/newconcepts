@@ -1,21 +1,9 @@
-import React, { useState, createContext, useContext } from 'react';
-// Lucide icons are correctly imported
-import { Award, GraduationCap, Users, Globe } from 'lucide-react';
+import React from 'react';
+import { Award, GraduationCap, Users } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
-// --- Context Mockup for Single-File App ---
-// Since the original code imported this context externally, we define a mock version 
-// to ensure the single file is runnable and the language logic works.
-const LanguageContext = createContext({
-  language: 'en',
-  setLanguage: () => {},
-});
-
-const useLanguage = () => useContext(LanguageContext);
-// ----------------------------------------
-
-const About = () => {
-  // Use the mocked language context
-  const { language, setLanguage } = useLanguage();
+const About: React.FC = () => {
+  const { language } = useLanguage();
 
   const content = {
     en: {
@@ -69,42 +57,32 @@ const About = () => {
   const current = language === 'en' ? content.en : content.es;
 
   return (
-    <div className="bg-white font-sans min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        
-        {/* Language Toggle */}
-        <div className="flex justify-end mb-8">
-            <button
-                onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="flex items-center space-x-2 p-2 bg-slate-100 text-slate-700 rounded-full hover:bg-slate-200 transition duration-150 text-sm font-medium shadow-sm"
-            >
-                <Globe size={18} />
-                <span>{language === 'en' ? 'Español' : 'English'}</span>
-            </button>
-        </div>
-
+    <div className="bg-white animate-fade-in font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           
-          {/* Image Column: This is where the specific image link is used */}
-          <div className="lg:w-1/3 w-full lg:sticky lg:top-12">
-            <div className="aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden shadow-2xl relative group">
-              <img 
-                // *** YOUR IMAGE LINK IS HERE ***
-                src="https://i.imgur.com/wY7dw9B.jpeg"
-                // Fallback image in case the main URL fails
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.src = "https://placehold.co/400x600/333/fff?text=Image+Not+Found";
-                }}
-                alt="Ky Washington - Drug & Alcohol Counselor"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
+          {/* Image Column */}
+          <div className="lg:w-1/3 w-full sticky top-24">
+             <div className="aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden shadow-xl relative group">
+                <img 
+                    src="https://i.imgur.com/wY7dw9B.jpeg" 
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.src = "https://picsum.photos/400/600?grayscale";
+                    }}
+                    alt="Ky Washington" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900 to-transparent pt-20 pb-6 px-6 text-white">
+                    <p className="font-bold text-2xl">Ky Washington</p>
+                    <p className="text-blue-200 font-medium">Program Director & Counselor</p>
+                </div>
+             </div>
           </div>
 
           {/* Bio Content Column */}
           <div className="lg:w-2/3">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">{current.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">{current.title}</h1>
             <h2 className="text-xl md:text-2xl text-teal-600 font-medium mb-10 border-b border-slate-100 pb-8">{current.role}</h2>
             
             <div className="prose prose-lg prose-slate max-w-none text-slate-600 space-y-6 leading-relaxed">
@@ -115,16 +93,16 @@ const About = () => {
 
             {/* Credentials Grid */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-slate-50 p-6 sm:p-8 rounded-xl border-l-4 border-blue-600 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="bg-slate-50 p-8 rounded-xl border-l-4 border-blue-600 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-6">
                    <div className="p-3 bg-blue-100 text-blue-600 rounded-full mr-4">
-                     <Award size={24} />
+                      <Award size={24} />
                    </div>
-                   <h3 className="font-bold text-slate-900 text-xl">{current.certsTitle}</h3>
+                   <h3 className="font-bold text-slate-900 text-lg">{current.certsTitle}</h3>
                 </div>
                 <ul className="space-y-3">
                     {current.certs.map((cert, idx) => (
-                      <li key={idx} className="flex items-start text-base text-slate-700">
+                      <li key={idx} className="flex items-start text-sm text-slate-700">
                         <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 mr-2 shrink-0"></span>
                         {cert}
                       </li>
@@ -132,16 +110,16 @@ const About = () => {
                 </ul>
               </div>
 
-              <div className="bg-slate-50 p-6 sm:p-8 rounded-xl border-l-4 border-teal-600 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="bg-slate-50 p-8 rounded-xl border-l-4 border-teal-600 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-6">
                    <div className="p-3 bg-teal-100 text-teal-600 rounded-full mr-4">
-                     <GraduationCap size={24} />
+                      <GraduationCap size={24} />
                    </div>
-                   <h3 className="font-bold text-slate-900 text-xl">{current.expertiseTitle}</h3>
+                   <h3 className="font-bold text-slate-900 text-lg">{current.expertiseTitle}</h3>
                 </div>
                 <ul className="space-y-3">
                     {current.expertise.map((exp, idx) => (
-                      <li key={idx} className="flex items-start text-base text-slate-700">
+                      <li key={idx} className="flex items-start text-sm text-slate-700">
                         <span className="w-1.5 h-1.5 bg-teal-600 rounded-full mt-2 mr-2 shrink-0"></span>
                         {exp}
                       </li>
@@ -150,12 +128,12 @@ const About = () => {
               </div>
             </div>
             
-            <div className="mt-12 p-8 bg-blue-900 text-white rounded-2xl flex flex-col sm:flex-row items-start shadow-xl border-b-4 border-blue-600">
-                <div className="p-4 bg-blue-700 rounded-full mr-6 mb-4 sm:mb-0 shrink-0">
-                   <Users size={28}/>
+            <div className="mt-12 p-8 bg-blue-900 text-white rounded-2xl flex items-start shadow-xl">
+                <div className="p-3 bg-blue-800 rounded-full mr-6 shrink-0">
+                   <Users size={24}/>
                 </div>
                 <div>
-                    <h4 className="font-bold text-2xl mb-2">{current.spanishTitle}</h4>
+                    <h4 className="font-bold text-xl mb-2">{current.spanishTitle}</h4>
                     <p className="text-blue-100 leading-relaxed">{current.spanishDesc}</p>
                 </div>
             </div>
@@ -166,15 +144,4 @@ const About = () => {
   );
 };
 
-// The main App component wraps the About component in the LanguageContext provider.
-const App = () => {
-    const [language, setLanguage] = useState('en');
-
-    return (
-        <LanguageContext.Provider value={{ language, setLanguage }}>
-            <About />
-        </LanguageContext.Provider>
-    );
-}
-
-export default App;
+export default About;
