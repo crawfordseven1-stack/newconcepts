@@ -65,10 +65,10 @@ const About: React.FC = () => {
           <div className="lg:w-1/3 w-full sticky top-24">
             <div className="aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden shadow-xl relative group">
               <img 
-                src="https://i.imgur.com/wY7dw9B.jpeg"
+                src="https://a.storyblok.com/f/333238/400x600/6f538c8b57/ky-washington-photo.jpg"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  target.src = "https://i.imgur.com/wY7dw9B.jpeg";
+                  target.src = "https://picsum.photos/400/600?grayscale";
                 }}
                 alt="Ky Washington"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
