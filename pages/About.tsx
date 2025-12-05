@@ -68,7 +68,7 @@ const About: React.FC = () => {
                 src="https://i.imgur.com/wY7dw9B.jpeg"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  target.src = "https://picsum.photos/400/600?grayscale";
+                  target.src = "https://i.imgur.com/wY7dw9B.jpeg";
                 }}
                 alt="Ky Washington"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
