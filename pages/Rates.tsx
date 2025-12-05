@@ -50,63 +50,67 @@ const Rates: React.FC = () => {
   const current = language === 'en' ? content.en : content.es;
 
   return (
-    <div className="animate-fade-in bg-white">
-       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="text-center mb-16">
-                <h1 className="text-4xl font-bold text-slate-900 mb-6">{current.title}</h1>
-                <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+    <div className="animate-fade-in bg-white font-sans">
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+            <div className="text-center mb-20">
+                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{current.title}</h1>
+                <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
                     {current.intro}
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
                 {/* Consultation Card */}
-                <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-2xl p-8 shadow-xl">
-                    <h2 className="text-2xl font-bold mb-4">{current.consultTitle}</h2>
-                    <ul className="space-y-4 mb-8">
-                        {current.consultItems.map((item, idx) => (
-                            <li key={idx} className="flex items-center">
-                                <ShieldCheck className="mr-3 text-teal-300" />
-                                <span className={idx === 2 ? "font-bold text-yellow-300" : ""}>{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <Link to="/contact" className="block w-full text-center bg-white text-blue-900 font-bold py-3 rounded-lg hover:bg-blue-50 transition-colors">
+                <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-2xl p-10 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <h2 className="text-3xl font-bold mb-8 border-b border-blue-500 pb-4">{current.consultTitle}</h2>
+                        <ul className="space-y-5 mb-10">
+                            {current.consultItems.map((item, idx) => (
+                                <li key={idx} className="flex items-center text-lg">
+                                    <ShieldCheck className="mr-4 text-teal-300 shrink-0" size={24} />
+                                    <span className={idx === 2 ? "font-bold text-yellow-300" : "font-medium"}>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <Link to="/contact" className="block w-full text-center bg-white text-blue-900 font-bold py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-md text-lg">
                         {current.bookConsultBtn}
                     </Link>
                 </div>
 
                 {/* Rates Info Card */}
-                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8">
-                    <h2 className="text-2xl font-bold text-slate-900 mb-4">{current.ratesTitle}</h2>
-                    <p className="text-slate-600 mb-6">
-                        {current.ratesDesc}
-                    </p>
-                    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-                        <p className="text-sm text-yellow-800 font-medium">
-                            {current.actionRequired}
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-10 flex flex-col justify-between">
+                    <div>
+                        <h2 className="text-3xl font-bold text-slate-900 mb-6">{current.ratesTitle}</h2>
+                        <p className="text-slate-600 mb-8 text-lg leading-relaxed">
+                            {current.ratesDesc}
                         </p>
+                        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8 rounded-r-lg">
+                            <p className="text-base text-yellow-900 font-semibold leading-relaxed">
+                                {current.actionRequired}
+                            </p>
+                        </div>
                     </div>
-                    <div className="space-y-3">
-                         <a href="tel:6198297899" className="flex items-center justify-center w-full bg-slate-200 text-slate-800 font-bold py-3 rounded-lg hover:bg-slate-300 transition-colors">
-                            <Phone className="mr-2" size={20}/> {current.callBtn}
+                    <div className="space-y-4">
+                         <a href="tel:6198297899" className="flex items-center justify-center w-full bg-slate-200 text-slate-800 font-bold py-4 rounded-xl hover:bg-slate-300 transition-colors text-lg">
+                            <Phone className="mr-3" size={20}/> {current.callBtn}
                         </a>
-                        <a href="sms:6198297899" className="flex items-center justify-center w-full border-2 border-slate-300 text-slate-700 font-bold py-3 rounded-lg hover:border-blue-500 hover:text-blue-600 transition-colors">
-                            <MessageSquare className="mr-2" size={20}/> {current.textBtn}
+                        <a href="sms:6198297899" className="flex items-center justify-center w-full border-2 border-slate-300 text-slate-700 font-bold py-4 rounded-xl hover:border-blue-500 hover:text-blue-600 transition-colors text-lg">
+                            <MessageSquare className="mr-3" size={20}/> {current.textBtn}
                         </a>
                     </div>
                 </div>
             </div>
 
             {/* Insurance Section */}
-            <div className="bg-slate-100 rounded-xl p-8 text-center max-w-3xl mx-auto">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">{current.insuranceTitle}</h3>
-                <p className="text-slate-600 mb-6">
+            <div className="bg-slate-100 rounded-2xl p-10 md:p-12 text-center max-w-4xl mx-auto border border-slate-200">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">{current.insuranceTitle}</h3>
+                <p className="text-slate-600 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
                     {current.insuranceDesc}
                 </p>
-                <p className="font-medium text-blue-800">
+                <a href="tel:6197310125" className="inline-block bg-blue-900 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-800 transition-colors">
                     {current.paymentCall}
-                </p>
+                </a>
             </div>
        </div>
     </div>
