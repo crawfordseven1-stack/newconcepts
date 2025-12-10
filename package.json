@@ -1,7 +1,7 @@
 {
-  "name": "new-concepts-in-recovery",
+  "name": "new-concepts-recovery",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,17 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-router-dom": "^7.10.1",
-    "react-dom": "^19.2.1",
-    "lucide-react": "^0.556.0",
-    "react": "^19.2.1",
-    "@vitejs/plugin-react": "^5.1.1",
-    "vite": "^7.2.6"
+    "lucide-react": "^0.344.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "@types/uuid": "^9.0.8",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.6"
   }
 }

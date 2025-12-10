@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # .github/workflows/deploy.yml
+=======
+# Simple workflow for deploying static content to GitHub Pages
+>>>>>>> ebc461f (Final project files with lock file and router fixes)
 name: Deploy static content to Pages
 
 on:
@@ -15,6 +19,7 @@ permissions:
   pages: write
   id-token: write
 
+<<<<<<< HEAD
 # Allow only one concurrent deployment
 concurrency:
   group: "pages"
@@ -55,14 +60,50 @@ jobs:
           path: './dist' 
 
   # 2. The deploy job: Runs ONLY after the build is successful and uses the artifact
+=======
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+>>>>>>> ebc461f (Final project files with lock file and router fixes)
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     # Wait for the 'build' job to complete successfully
     needs: build 
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+=======
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Create .nojekyll
+        run: touch dist/.nojekyll
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+>>>>>>> ebc461f (Final project files with lock file and router fixes)
