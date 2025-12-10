@@ -1,9 +1,9 @@
-# .github/workflows/deploy.yml
 name: Deploy Vite App to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -21,40 +21,25 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        # CRITICAL FIX 1: If assets are not at the root of the repo (e.g., in a sub-folder like 'src/'), 
-        # using submodules can sometimes resolve path issues.
-        with:
-          submodules: true
-          
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # CRITICAL FIX 2: Ensure cache is enabled to speed up builds and requires package-lock.json
-          cache: 'npm' 
-          
-      - name: Install dependencies
-        # FIX 3: Use 'npm install' instead of 'npm ci' if you haven't committed package-lock.json yet. 
-        # If package-lock.json is present, 'npm ci' is preferred for speed and strictness.
-        run: npm install 
 
-      - name: Build site (Creates the 'dist' folder)
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
         run: npm run build
 
-      # CRITICAL FIX 4: Add step to create .nojekyll file to prevent GH Pages from ignoring files
-      # (e.g., files starting with underscores) and ensures Vite's output is served as a static site.
-      - name: Create .nojekyll
-        run: touch dist/.nojekyll
-
-      # FIX 5: Use actions/configure-pages before uploading the artifact
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # FIX 6: Ensure the path is correct
-          path: ./dist 
+          path: ./dist
 
   deploy:
     runs-on: ubuntu-latest
